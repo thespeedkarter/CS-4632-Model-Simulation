@@ -32,13 +32,14 @@ public class Simulation {
         }
 
         // Simulate serving customers at both checkout types
+        //TODO: Add customer count
         System.out.println("\nServing customers at self-checkout:");
-        for (int i = 0; i < customers; i++) {
+        for (int i = 0; i < 5; i++) {
             selfCheckout1.serveCustomer();
         }
 
         System.out.println("\nServing customers at cashier:");
-        for (int i = 0; i < customers; i++) {
+        for (int i = 0; i < 5; i++) {
             cashier1.serveCustomer();
         }
     }
