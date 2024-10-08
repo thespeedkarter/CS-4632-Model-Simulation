@@ -19,10 +19,12 @@ public abstract class CheckoutLane {
     }
 
     public int getQueueLength() {
+        //TODO
         return queue.size();
     }
 
     public String getType() {
+        //TODO
         return type;
     }
 }
