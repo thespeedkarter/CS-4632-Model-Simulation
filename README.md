@@ -1,28 +1,68 @@
 # CS-4632-Model-Simulation
 ### Project Overview:
 
-The focus of this project will be the simulation and performance comparison of the self-checkout stations with the served cashier lanes in a retail setup. This simulation incorporates an analysis of relevant parameters such as the average waiting time of customers, average transaction time, average error rate, and average operational support to establish a more efficient system under the conditions introduced.
+In this simulation, a retail checkout environment is replicated in order to examine the operational efficiency, cost effectiveness and customer satisfaction levels of self-checkout and cashier checkout systems. Users are also able to simulate a variety of circumstances such as different customer load, error rates and customer types by changing certain parameters of the model.
 
-### Goals for Implementation:
+### Features:
 
-Develop and use a discrete-event simulation (DES), which addresses customer comings and service functions in the self-checkout lane and lanes with a cashier.
+**Discrete Event Simulation:** Implements DES to model customer arrivals, service times, queue management, and event scheduling.
 
-Where appropriate, integrate simulation of real-world accounts for variances in customer arrival rates of transactions and the rate of errors.
+**Customer Demographics:** Incorporates customer behavior based on demographic characteristics affecting lane preferences and error rates.
 
-Performance is assessed based on average wait time, queue length, and customer satisfaction with the system.
+**Adjustable Parameters:** Allows users to modify simulation parameters, including customer count, error rates, number of lanes, and demographic distribution.
 
-Generate an output that enables one to visualize and compare different designs of self-checkout stations and cashier lanes.
+**Statistical Analysis:** Collects detailed data on customer wait times, transaction times, error occurrences, and lane utilization.
 
-### Plan for Simulation:
+**Graphical User Interface (GUI):** Provides an interactive GUI for inputting parameters and viewing simulation results.
 
-**Input Variables:** Number of customers, the ratio of self-checkout stations to cashier lines, rates of customer arrivals, and rates of causing errors.
+**Data Export:** Enables exporting of simulation results to CSV files for further analysis.
 
-**Output Metrics:** Wait time averages, queue length, levels of customer satisfaction, and operational expenses.
+### Simulation Parameters:
 
-**End State:** This is a complete simulation that incorporates different scenarios to enable adequate assessment of the efficiency of self-service for shoppers against standard checkout of shoppers.
+**Customer Count:** Total number of customers to simulate.
 
-### Extensions/Changes to Original Documentation:
+**Error Rate:** Base error rate for self-checkout lanes (value between 0.0 and 1.0).
 
-The revision of the UML diagram explained reasons for the changes in the system structure more so why a population and activity state need to be accounted for to consider changing error rates and different patterns of customers.
+**Number of Self-Checkout Lanes:** Total self-checkout lanes available.
 
-The initial review has been enhanced by including some recent applications of self-checkout technology in retail settings.
+**Number of Cashier Lanes:** Total cashier-operated lanes available.
+
+### Modeling Techniques:
+
+**Arrival Process:** Modeled as a Poisson process to simulate random customer arrivals.
+Service Times:
+
+>**Self-Checkout Lanes:** Log-normal distribution to account for variability due to errors and user familiarity.
+
+>**Cashier Lanes:** Normal distribution reflecting consistent service times.
+
+**Customer Demographics:**
+
+>**Tech-Savvy Customers:** Higher preference for self-checkout lanes, lower error rates.
+
+>**Less Tech-Savvy Customers:** Higher preference for cashier lanes, higher error rates in self-checkout.
+
+**Error Handling:**
+
+>Errors occur based on specified probabilities.
+
+>Additional service time added to simulate error resolution.
+
+**Event Scheduling:** Uses the Next-Event Time Advance approach.
+
+**Queue Management:** First-Come, First-Served discipline with separate queues for each lane type.
+
+## Assumptions and Limitations:
+
+**Assumptions:**
+
+>Customer arrivals are random and independent.
+>Service times vary based on lane type and customer demographics.
+>Error rates are influenced by customer tech-savviness.
+
+**Limitations:**
+>Does not model customers abandoning queues or switching lanes.
+>Technical failures of systems are not explicitly modeled.
+>Staff interventions are implicitly included in error resolution times.
+>Learning effects over time are not considered.
+
