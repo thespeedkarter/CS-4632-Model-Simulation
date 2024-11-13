@@ -5,17 +5,19 @@ public class SelfCheckout extends CheckoutLane {
     }
 
     @Override
-    public void serveCustomer() {
+    public Customer serveCustomer(double currentTime) {
         if (!queue.isEmpty()) {
             Customer currentCustomer = queue.poll();
-            double transactionTime = currentCustomer.getTransactionTime();
+            currentCustomer.setServiceStartTime(currentTime);
+            double serviceTime = currentCustomer.getTransactionTime();
 
             if (currentCustomer.isError()) {
-                transactionTime *= 1.5;
-                System.out.println("Error occurred at self-checkout for customer " + currentCustomer.getId() + ". Transaction took longer.");
+                serviceTime *= 1.5;
             }
 
-            System.out.println("Customer " + currentCustomer.getId() + " served at " + type + " in " + transactionTime + " seconds.");
+            currentCustomer.setServiceEndTime(currentTime + serviceTime);
+            return currentCustomer;
         }
+        return null;
     }
 }

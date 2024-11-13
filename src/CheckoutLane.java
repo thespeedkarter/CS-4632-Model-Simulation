@@ -5,26 +5,34 @@ public abstract class CheckoutLane {
     protected Queue<Customer> queue;
     protected double serviceRate;
     protected String type;
+    protected boolean busy; // To indicate if the lane is currently serving a customer
 
     public CheckoutLane(double serviceRate, String type) {
         this.queue = new LinkedList<>();
         this.serviceRate = serviceRate;
         this.type = type;
+        this.busy = false;
     }
 
-    public abstract void serveCustomer();
+    public abstract Customer serveCustomer(double currentTime);
 
     public void addCustomer(Customer customer) {
         queue.add(customer);
     }
 
     public int getQueueLength() {
-        //TODO
         return queue.size();
     }
 
     public String getType() {
-        //TODO
         return type;
+    }
+
+    public boolean isIdle() {
+        return !busy;
+    }
+
+    public void setBusy(boolean busy) {
+        this.busy = busy;
     }
 }
